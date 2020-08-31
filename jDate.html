@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            日期对象: Date
+            获取：
+                年   getFullYear()
+                月   getMonth()
+                日   getDate()
+                周   getDay()
+                小时 getHours()
+                分钟 getMinutes()
+                秒   getSeconds()
+                毫秒 getTime()
+
+                future Time  2020 8 10 24:00:00
+
+            设置：
+                年   setFullYear()
+                月   setMonth()   0 一月 11 十二月
+                日   setDate()
+                周   setDay()
+                小时 setHours()
+                分钟 setMinutes()
+                秒   setSeconds()
+                毫秒 setTime()
+        */
+        var date = new Date();
+        var futureDate = new Date("2020/8/10 18:00:00");
+        var lastTime = futureDate.getTime() - date.getTime();
+        var lastSecond = parseInt(lastTime / 1000 % 60);
+        var lastMinute = parseInt(lastTime / 1000 / 60 % 60);
+        var lastHour = parseInt(lastTime / 1000 / 60 / 60);
+
+        document.write("距离下班还有：" + lastHour + "小时/" + lastMinute + "分钟/" + lastSecond + "秒！！！");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
