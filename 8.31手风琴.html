@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../？文件夹/jquery.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 400px; 
+            height: 210px; 
+            margin: auto;
+        }
+        ul{
+            font-size: 25px;
+            line-height: 68px;
+            text-align: center;
+            border: 1px solid #f99;
+            background-color: #E7EAED;
+            cursor: pointer;
+        }
+        ul li{
+            background-color: #50AAF8;
+            height: 70px;
+            border-top: 1px solid #f111f1;
+            color:#f00;
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="ul1">
+            PLAY1
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <ul class="ul2">
+            PLAY2
+            <li>F</li>
+            <li>G</li>
+            <li>H</li>
+            <li>I</li>
+            <li>J</li>
+        </ul>
+        <ul class="ul3">
+            PLAY3
+            <li>K</li>
+            <li>L</li>
+            <li>M</li>
+            <li>N</li>
+            <li>O</li>
+        </ul>
+        <script>
+            $(".ul1").mouseenter(function(){
+                $("ul").stop(true);
+                $(".ul1").css({"background-color": "pink","color":"yellow"});
+                $(".ul1>li").slideToggle(2000);
+            })
+            $(".ul1").mouseleave(function(){
+                $(".ul1").css({"background-color": "#E7EAED","color":""});
+            })
+            $(".ul2").mouseenter(function(){
+                $("ul").stop(true);
+                $(".ul2").css({"background-color": "pink","color":"yellow"});
+
+                $(".ul2>li").slideToggle(2000);
+            })
+            $(".ul2").mouseleave(function(){
+                $(".ul2").css({"background-color": "#E7EAED","color":""});
+            })
+            $(".ul3").mouseenter(function(){
+                $("ul").stop(true);
+                $(".ul3").css({"background-color": "pink","color":"yellow"});
+                $(".ul3>li").slideToggle(2000);
+            })
+            $(".ul3").mouseleave(function(){
+                $(".ul3").css({"background-color": "#E7EAED","color":""});
+            })
+            
+        </script>
+    </div>
+</body>
+</html>
