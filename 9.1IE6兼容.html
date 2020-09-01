@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest; //高级
+        } else{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP"); //ie6
+        }
+        xhr.onreadystatechange = function(){
+            console.log(xhr.console);
+        }
+        xhr.open("get","9.1.json",true);
+        xhr.send(null);
+
+        
+        
+    </script>
+</body>
+</html>

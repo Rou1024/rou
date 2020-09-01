@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="table" border="1" cellspacing="0" cellpadding="20" align="center"></table>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                var response = JSON.parse(xhr.responseText);
+                console.log(response)
+                var table = document.getElementById("table");
+                var str = '<tr><th>姓名</th><th>年龄</th><th>爱好</th></tr>';
+                for (var i = 0; i < response.both.length; i++){
+                    str += '<tr><td>' +response.both[i].name+
+                            '</td><td>' +response.both[i].age+
+                            '</td><td>' +response.both[i].hobby+
+                            '</td></tr>'
+                }
+                table.innerHTML = str;
+            }
+        }
+        xhr.open("get","9.1.json",true);
+        xhr.send(null);
+    </script>
+</body>
+</html>

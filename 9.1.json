@@ -1,0 +1,29 @@
+{
+    "both":[
+        {
+            "name": "Jenny",
+            "age": 18,
+            "hobby": "singing"
+        },
+        {
+            "name": "Tom",
+            "age": 20,
+            "hobby": "dancing"
+        },
+        {
+            "name": "Sir",
+            "age": 19,
+            "hobby": "drawing"
+        },
+        {
+            "name": "Tony",
+            "age": 22,
+            "hobby": "singing"
+        },
+        {
+            "name": "Egg",
+            "age": 8,
+            "hobby": "tom"
+        }
+    ]
+}
