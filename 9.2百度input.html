@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #keyword{
+            width: 500px;
+            height: 40px;        
+            border: 1px solid skyblue;
+            outline: none;
+            font-size: 20px;
+            padding: 10px;
+            margin: 100px  300px 0 300px;
+        }
+        #ul{
+            width: 520px;
+            line-height: 40px;
+            border: 1px solid rgb(71, 151, 189);
+            list-style: none;
+            display: none;
+            margin: 0 300px;
+        }
+        li a{
+            display: block;
+            line-height: 40px;
+            padding: 10px;
+            color: #ccc;
+            text-decoration: none;
+        }
+        li a:hover{
+            color: #4662D9;
+        }
+    </style>
+</head>
+<body>
+    <input id="keyword" type="text" name="" value="">
+    <ul id="ul"></ul>
+    <script>
+        function myNeed(data){
+            console.log(data.s);
+            var str = "";
+            if(data.s.length){
+                ul.style.display = "block";
+                for(var i = 0; i < data.s.length; i++){
+                    str += '<li><a target="_blank" href="https://www.baidu.com/s?wd=' + data.s[i] + '">' + data.s[i] + '</a></li>'
+                }
+                ul.innerHTML = str;
+            } else {
+                ul.style.display = "none";
+            }
+        }
+
+
+        var keyword = document.getElementById("keyword");
+        var ul = document.getElementById("ul");
+        keyword.onkeyup = function(){
+            if(keyword.value != ""){
+                var now = document.createElement("script");
+                now.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + this.value + "&cb=myNeed";
+                document.body.appendChild(now);
+                document.body.removeChild(now);
+            } else {
+                ul.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

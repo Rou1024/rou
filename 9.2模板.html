@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "今天星期%ji%呢？心情很%hao%,该%wan%";
+        var div = {
+            "ji":"三",
+            "hao":"很好",
+            "wan":"玩"
+        }
+        function compile(templateString,dictionary){
+            return templateString.resple(/\%([a-z] + )\%/g,function(match,$1,index,string){
+                return dicctionary[$1];
+            })
+            str = comptile(str,div)
+            console.log(str);
+        }
+    </script>
+</body>
+</html>
