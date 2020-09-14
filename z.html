@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .dl{
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/04.jpg);
+        }
+        .kuang{
+            width: 400px;
+            height: 500px;
+            border: 1px solid #f99;
+            background-image: url(./img/01.jpg);
+            background-size: 100% 100%;
+            position:absolute;
+            top: 60px;
+            right: 160px;
+            background-repeat: no-repeat;
+            border-radius: 30px;
+        }
+        .denglu{
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .login-user,.login-pwd, .login-yan{
+            position: relative;
+            background: #ECEEF0;
+            width: 300px;
+            height: 53px;
+            margin-left: 50px;
+            line-height: 53px;
+            margin-bottom: 30px;
+            border-radius: 50px;
+        } 
+        .icon{
+            position: absolute;
+            z-index: 1;
+            left: 36px;
+            top: 3px;
+            opacity: 1;
+            color: #000;
+        }
+        .icon img{
+            width: 18px;
+            height: 18px;
+        }
+        input{
+            width: 300px;
+            height: 50px;
+            background: rgba(57, 61, 82, 0);
+            line-height: 53px;
+            text-indent: 65px;
+            border: none;
+            outline: none;
+            color: #61BFFF !important;
+        }   
+        .btn{
+            text-align: center;
+        }
+        .btn input{
+            text-indent: 0;
+            cursor: pointer;
+            background-color: tomato;
+            
+        }
+        #iframe{
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="iframe-wrap">
+        <iframe id="iframe" src="https://www.jq22.com/demo/particles20160927" frameborder="0" width="100%"></iframe>
+    </div>
+    <div class="dl">
+        <div class="kuang">
+            <div class="denglu"><b>注 册</b></div>
+            <div class="login-user">
+                <div class="icon">
+                    <img src="./img/denglu.png" alt="">
+                </div>
+                <input class="phone" type="text" placeholder="手机号">
+            </div>
+            <div class="login-pwd">
+                <div class="icon">
+                    <img src="./img/mima.png" alt="">
+                </div>
+                <input class="password" type="password" placeholder="密码" value="">
+            </div>
+            <div class="login-pwd">
+                <div class="icon">
+                    <img src="./img/mima.png" alt="">
+                </div>
+                <input class="email" type="email" placeholder="邮箱" value="">
+            </div>
+            <div class="login-yan">
+                <div class="icon">
+                    <img src="./img/yan.png" alt="">
+                </div>
+                <input class="username" type="text" placeholder="用户名" value="">
+            </div>
+            <div class="btn">
+                <input type="button" value="OK">
+            </div>
+        </div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(".btn").click(function(){
+        
+            $.ajax({
+                url:"http://192.168.1.107:3000/users/register",
+                type:"post",
+                data:{
+                    "username":$(".username").val(),
+                    "password":$(".password").val(),
+                    "email":$(".email").val(),
+                    "phone":$(".phone").val()
+                },
+                success:function(res){
+                    console.log(res);
+                    if(res.state == 0){
+                        alert("注册成功");
+                        window.location="d.html";
+                    } else if(res.state == -1){
+                        alert("请输入内容");
+                    } else if(res.state == 1){
+                        alert("用户名已存在");
+                    }
+                }
+            })
+        })
+
+
+        
+        
+    </script>
+</body>
+</html>

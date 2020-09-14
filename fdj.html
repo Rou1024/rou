@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+    <!-- <meta http-equiv="Refresh" content="1" /> -->
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .center {
+            width: 1000px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: #f99;
+            float: left;
+            margin-right: 40px;
+            position: relative;
+            cursor: move;
+        }
+
+        .shade {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(100, 100, 255, .5);
+            display: none;
+        }
+
+        .big_box {
+            float: left;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            background-image: url(./image/big1.jpg);
+            display: none;
+        }
+
+        .box>ul>li {
+            display: none;
+        }
+
+        .box>ul>li.active {
+            display: block;
+        }
+
+        .small {
+            position: absolute;
+            bottom: 350px;
+            height: 100px;
+            width: 300px;
+        }
+
+        .small>ul>li {
+            margin-left: 10px;
+            width: 100px;
+            float: left;
+            height: 100px;
+            border: 3px solid #ffffff;
+        }
+
+        .small>ul>li.active {
+            border-color: red;
+        }
+
+        .small>ul>li>img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="box">
+            <ul>
+                <li class="active">
+                    <img src="./image/middle1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./image/middle2.jpg" alt="">
+                </li>
+            </ul>
+            <div class="shade"></div>
+        </div>
+        <div class="small">
+            <ul>
+                <li class="active">
+                    <img src="./image/middle1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./image/middle2.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="big_box" style="background-size: 1600px 1600px;">
+        </div>
+    </div>
+    <script>
+
+        var small = document.querySelector(".small");
+        var smallLi = document.querySelectorAll(".small>ul>li");
+        var box = document.querySelector(".box");
+        var boxLi = document.querySelectorAll(".box>ul>li");
+        var shade = document.querySelector(".shade");
+        var bigBox = document.querySelector(".big_box");
+        //点击小图片  中图片和大图片跟着换
+        for (var i = 0; i < smallLi.length; i++) {
+            smallLi[i].index = i;
+            smallLi[i].onclick = function () {
+                for (var n = 0; n < smallLi.length; n++) {
+                    smallLi[n].className = "";
+                    boxLi[n].className = "";
+                }
+                this.className = "active";
+                var img = this.querySelector("img").src;
+                img = img.replace("middle", "big")
+                index = this.index;
+                boxLi[index].className = "active";
+                bigBox.style.backgroundImage = "url(" + img + ")";
+            }
+        }
+
+
+        //鼠标移入  shade显示  并且跟随鼠标移动  大盒子显示  背景图定位跟着动
+        box.onmouseenter = function (e) {
+            shade.style.display = "block";
+            bigBox.style.display = "block";
+            var x = shade.offsetWidth / 2;
+            var y = shade.offsetHeight / 2;
+            //鼠标移动 获取鼠标的位置，相对应给shade的定位,鼠标要保持在shade中间
+            box.onmousemove = function (e) {
+                console.log(box.offsetLeft);
+                var X = e.pageX - box.offsetLeft - x;
+                var Y = e.pageY - box.offsetTop - y;
+                var a = box.clientWidth - shade.offsetWidth;
+                var b = box.clientHeight - shade.offsetHeight;
+                X = X < 0 ? 0 : X;
+                X = X > a ? a : X;
+                Y = Y < 0 ? 0 : Y;
+                Y = Y > b ? b : Y;
+                shade.style.left = X + "px";
+                shade.style.top = Y + "px";
+
+                bigBox.style.backgroundPositionX = -X * parseInt(bigBox.style.backgroundSize.substring(0, 5)) / bigBox.offsetWidth + "px";
+                bigBox.style.backgroundPositionY = -Y * parseInt(bigBox.style.backgroundSize.substring(6)) / bigBox.offsetHeight + "px";
+            }
+        }
+        //鼠标移除 把鼠标移动时间清除,遮罩跟大盒子隐藏
+        box.onmouseleave = function () {
+            box.onmousemove = null;
+            shade.style.display = "none";
+            bigBox.style.display = "none";
+        }
+
+
+    </script>
+</body>
+
+</html>

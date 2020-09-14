@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn{
+            width: 60px;
+            line-height: 25px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <input id="btn" type="button" value="点击">
+    <script>
+        //1 
+        // function fun(obj){
+        //     console.log(obj);
+        // }
+        // 2
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var butt = document.createElement("script");
+            document.body.appendChild("butt");
+            butt.src = "./student.json";
+        }
+    </script>
+    <!-- <script src="./jsonp.txt"></script> -->
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input id="btn" type="button" value="点击">
+    <script>
+        function fun(res){
+            console.log(res)
+        }
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            var scriptObj = document.createElement("script");
+            document.body.appendChild(scriptObj);
+            scriptObj.src="./jsonp.txt"
+        }
+
+        
+    </script>
+    
+</body>
+</html>

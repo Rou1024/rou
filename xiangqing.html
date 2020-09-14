@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./9.4pinxixi.css">
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="nav bx">
+            <div class="logo"><a href=""><img src="./img/pdd_logo.png" alt=""></a></div>
+            <div class="nav1">
+                <a class="shouye" href="">首页</a>
+                <span>|</span>
+                <a href="">商家入驻</a>
+                <span>|</span>
+                <a href="">热点资讯</a>
+                <span>|</span>
+                <a href="">社会招聘</a>
+                <span>|</span>
+                <a href="">校园招聘</a>
+                <span>|</span>
+                <a href="">招采平台</a>
+                <span>|</span>
+                <a href="">帮助中心</a>
+                <span>|</span>
+                <a href="">举报平台</a>
+                <span>|</span>
+                <a href="">分享赚钱</a>
+            </div>
+        </div>
+        <div class="red"></div>
+    </div>
+
+
+    <div class="xiangqing bx">
+        <div class="xq-left">
+            <div class="pic">
+                <!-- <img src="./images/1.jpg" alt="">
+                <div class="lok"></div>
+                <div class="bigbox" style="background-size:840px 840px"></div> -->
+
+            </div>
+            <div class="little-pic">
+                <!-- <li class="one">
+                    <img src="./images/1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg" alt="">
+                </li> -->
+            </div>
+        </div>
+        <div class="xq-right">
+            <div class="pinleiming">
+                <b>
+                    2020新款妈妈开衫毛衣中年女装40岁50中老年秋装秋衣外穿洋气外套
+                </b>
+            </div>
+            <div class="panel-cx">
+                <p>价格 <span>￥2000.0</span></p>
+                <p>促销价 <span>￥200.0</span></p>
+            </div>
+            <div class="huod">活动中：<span>满500减60</span>
+                <p style="line-height: 50px;">活动期间凡是享受满减活动商品与优惠劵不得叠加使用！！！</p>
+            </div>
+            <div class="yunf">运费：00.00 <span style="color: rgb(170, 167, 167);">(包邮)</span></div>
+            <div style="margin-top: 20px;">
+                <div>数量：</div>
+                <div style="margin: 10px 0 0 50px;">
+                    <input class="jia" type="button" value="+">
+                    <a class="numchange">1</a>
+                    <input class="jian" type="button" value="-">
+                </div>
+            </div>
+            <div class="gou">
+                <a class="goumai" href="">立即购物</a>
+                <a class="jiagou" href="">加入购物车</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var a = location.search
+        if (!a) {
+            location.href = "./xiangqing.html";
+        } else {
+            a = a.split("=")[1]
+        }
+        console.log(a)
+        $.ajax({
+            url: "http://127.0.0.1/w/website/findGoodsDetail",
+            data: {
+                info: a
+            },
+            success: function (res) {
+                res = res.data.detail.tbk_item_info_get_response.results.n_tbk_item[0]
+                console.log(res);
+                $(".xq-right").html(
+                    `<div class="pinleiming">
+                <b>
+                    ${res.title}
+                </b>
+            </div>
+            <div class="panel-cx">
+                <p>价格 <span>￥${res.reserve_price}</span></p>
+                <p>促销价 <span>￥${res.zk_final_price}</span></p>
+            </div>
+            <div class="huod">活动中
+                <p style="line-height: 50px;">活动期间凡是享受满减活动商品与优惠劵不得叠加使用！！！</p>
+            </div>
+            <div class="yunf">运费：00.00 <span style="color: rgb(170, 167, 167);">(包邮)</span></div>
+            <div style="margin-top: 20px;">
+                <div>数量：</div>
+                <div style="margin: 10px 0 0 50px;">
+                    <input class="jia" type="button" value="+">
+                    <a class="numchange">1</a>
+                    <input class="jian" type="button" value="-">
+                </div>
+            </div>
+            <div class="gou">
+                <a class="goumai" href="">立即购物</a>
+                <a class="jiagou" href="./shopping.html">加入购物车</a>
+            </div>`
+                )
+                $(".jia").click(function () {
+                    var numg = parseInt($(this).next().html()) + 1;
+                    if (numg < 20) {
+                        $(this).next().html(numg);
+                    }
+                })
+                $(".jian").click(function () {
+                    var numg = parseInt($(this).prev().html()) - 1;
+                    if (numg > 0) {
+                        $(this).prev().html(numg);
+                    }
+                })
+                
+                
+                if(res.small_images){
+                   var img = res.small_images.string
+                }else{
+                    var img = res.pict_url
+                }
+                $(".pic").html(
+                    `
+                    <img src="${img[0]}" alt="">
+                    <div class="lok"></div>
+                    <div class="bigbox" style="background-size:840px 840px"></div>
+                    `
+                )
+                $(".bigbox").css("background-image",`url("${img[0]}")`)
+                var str = ""
+                for(var i = 0;i<img.length;i++){
+                    if(i===0){
+                        str +=`<li class="one">
+                        <img src="${img[i]}"  alt="">
+                        </li>`
+                    }else{
+                        str +=`<li>
+                        <img src="${img[i]}"  alt="">
+                        </li>`
+                    }            
+                }
+                $(".little-pic").html(str)
+
+
+        var xqleft = document.getElementsByClassName("xq-left");
+        var little_pic = document.getElementsByClassName("little-pic")[0];
+        var lilist = document.querySelectorAll(".little-pic>li");
+        var pic = document.getElementsByClassName("pic")[0];
+        var piclist = document.getElementsByClassName("pic")[0].children[0];
+        var lok = document.getElementsByClassName("lok")[0];
+        var bigbox = document.getElementsByClassName("bigbox")[0];
+        var x = lok.offsetWidth / 2;
+        var y = lok.offsetHeight / 2;
+        for (var i = 0; i < lilist.length; i++) {
+            lilist[i].index = i;
+            lilist[i].onclick = function () {
+                for (var n = 0; n < lilist.length; n++) {
+                    lilist[n].className = "";
+                }
+                this.className = "one";
+                var img = this.querySelector("img").src;
+                piclist.src = img
+                bigbox.style.backgroundImage = `url("${img}")`
+            }
+        }
+        pic.onmouseenter = function (e) {
+            lok.style.display = "block";
+            bigbox.style.display = "block";
+            var x = lok.clientWidth / 2;
+            var y = lok.clientHeight / 2;
+            pic.onmousemove = function (e) {
+                var X = e.pageX - pic.offsetLeft - x;
+                var Y = e.pageY - pic.offsetTop - y;
+
+                var a = pic.clientWidth - lok.offsetWidth;
+                var b = pic.clientHeight - lok.offsetHeight;
+                X = X < 0 ? 0 : X;
+                X = X > a ? a : X;
+                Y = Y < 0 ? 0 : Y;
+                Y = Y > b ? b : Y;
+                lok.style.left = X + "px";
+                lok.style.top = Y + "px";
+                bigbox.style.backgroundPositionX = -X * parseInt(bigbox.style.backgroundSize.split(" ")[0]) / bigbox.offsetWidth + "px";
+                bigbox.style.backgroundPositionY = -Y * parseInt(bigbox.style.backgroundSize.split(" ")[1]) / bigbox.offsetHeight + "px";
+            }
+        }
+        pic.onmouseleave = function () {
+            pic.onmousemove = null;
+            lok.style.display = "none";
+            bigbox.style.display = "none";
+        }
+                
+            }
+        })
+
+    </script>
+
+    <script>
+        // $(".jia").click(function () {
+        //     var numg = parseInt($(this).next().html()) + 1;
+        //     if (numg < 20) {
+        //         $(this).next().html(numg);
+        //     }
+        // })
+        // $(".jian").click(function () {
+        //     var numg = parseInt($(this).prev().html()) - 1;
+        //     if (numg > 0) {
+        //         $(this).prev().html(numg);
+        //     }
+        // })
+    </script>
+
+
+
+
+
+
+
+
+    <!-- 底部 -->
+    <div class="foot bx cf">
+        <div class="foot-er">
+            <div class="foot-er-1">
+                <img src="//cdn.pinduoduo.com/home/static/img/common/pdd_foot_wechat.png" alt="">
+                <p>扫描二维码微信关注</p>
+            </div>
+            <div class="foot-er-2">
+                <img src="//cdn.pinduoduo.com/home/static/img/qrcode/natural/qrcode.png" alt="">
+                <p>扫描二维码下载App</p>
+            </div>
+            <div class="foot-er-3">
+                <img src="//cdn.pinduoduo.com/home/static/img/common/pdd_foot_service.png" alt="">
+                <p style="margin: 8px auto 0 auto;">微信扫码面给领取</p>
+                <p style="margin: 0 auto 8px auto;">拼多多店铺</p>
+            </div>
+        </div>
+        <div class="mid"></div>
+        <div class="foot-right">
+            <p id="lianxiwomen">联系我们</p>
+            <p>客服&举报电话：021-53395288（推荐）或400-8822-528</p>
+            <p>商家热线：021-5339-5088</p>
+            <p>商家客服服务时间：8:00-20:30</p>
+            <p>消费者客服服务时间：8:00-21:30</p>
+            <p>消费者客服外呼号码显示：9541366（仅呼出，不支持呼入）</p>
+            <p>上海寻梦信息技术有限公司</p>
+        </div>
+    </div>
+    <div class="bx foot-mid">
+        <ul class="cf" style="margin-bottom: 0;">
+            <li>
+                <a href="">入住多多国际</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">校园招聘</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">关于我们</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">帮助中心</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">下载App</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">消费者保障</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">维权投诉指引</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">廉政举报</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">服务协议</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">隐私政策</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">征求意见</a>
+                <span>|</span>
+            </li>
+            <li>
+                <a href="">Investor Relations</a>
+            </li>
+        </ul>
+    </div>
+    <div class="foot-end">
+        <div style="padding-top: 27px;">
+            <span>Copyright 2015-2020 pinduoduo.com 版权所有</span>
+            <a href="http://www.miitbeian.gov.cn/">(增值电信业务经营许可证：沪B2-20170215)</a>
+        </div>
+        <div style="padding: 17px 0;">
+            <a href="https://cdn.pinduoduo.com/home/static/img/common/pdd_medicine_certificate.png">互联网药品信息服务资格证书：（沪）-经营性-2019-0052</a>
+        </div>
+        <div>
+            <a style="position: relative;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502000392"><div class="huizhang"></div> 沪公网安备 31010502000392号</a>
+            <span style="margin-left: 25px;">（沪）网械平台备字[2018]第00003号</span>
+            <a style="margin-left: 25px;" href="http://www.beian.miit.gov.cn/">沪ICP备15010535号-13</a>
+            <span style="margin: 0 15px 0 15px;">|</span>
+            <a href="https://cdn.pinduoduo.com/home/static/img/common/business_licence.jpg">营业执照</a>
+        </div>
+    </div>
+</body>
+
+</html>

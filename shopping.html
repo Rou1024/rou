@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./9.4pinxixi.css">
+    <script src="./jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <table class="table">
+        <tr class="tr1">
+            <th><input class="pick" type="checkbox"></th>
+            <th>全选</th>
+            <th>商品信息</th>
+            <th>单价(元)</th>
+            <th>数量</th>
+            <th>总金额</th>
+            <th>操作</th>
+        </tr>
+    </table>
+    <div class="bx">
+        <span>总价(不含运费):</span>
+        <span class="zj">0.0</span>
+        <span>总数量</span>
+        <span class="zl">0</span>
+        <a href="">结算</a>
+    </div>
+    <script>
+            $(".tr1").after(
+                $(".tr1").after(
+                    `<tr class="tr2">
+                        <td><input class="pick-d" type="checkbox"></td>
+                        <td><img style="width: 70px; height: 70px; display: block;" src="" alt=""></td>
+                        <td><a href="">123</a></td>
+                        <td>22</td>
+                        <td>
+                            <input class="jia" type="button" value="+">
+                            <a class="numchange">1</a>
+                            <input class="jian" type="button" value="-">
+                        </td>
+                        <td class="zongjia">22.0</td>
+                        <td>
+                            <a class="shanchu" href="">删除</a>
+                        </td>
+                    </tr>)
+                    <tr class="tr2">
+                        <td><input class="pick-d" type="checkbox"></td>
+                        <td><img style="width: 70px; height: 70px; display: block;" src="" alt=""></td>
+                        <td><a href="">234</a></td>
+                        <td>59</td>
+                        <td>
+                            <input class="jia" type="button" value="+">
+                            <a class="numchange">1</a>
+                            <input class="jian" type="button" value="-">
+                        </td>
+                        <td class="zongjia">59.0</td>
+                        <td>
+                            <a class="shanchu" href="">删除</a>
+                        </td>
+                    </tr>)`
+                ) 
+            )
+        
+        
+
+
+
+            // 加
+        $(".jia").click(function(){
+            var numg = parseInt($(this).next().html())+1;
+            if(numg < 11){
+                $(this).next().html(numg);
+                var zjia = +$(this).parent().prev().html();
+                $(this).parent().next().html((numg*zjia).toFixed(1));
+            } 
+            result()
+        })
+            // 减
+        $(".jian").click(function(){
+            var numg = parseInt($(this).prev().html())-1;
+            if(numg > 0){
+                $(this).prev().html(numg);
+                var zjia = +$(this).parent().prev().html();
+                $(this).parent().next().html((numg*zjia).toFixed(1));
+            } 
+            result()
+        })
+            // 全选
+        $(".pick").click(function(){
+            var flag = $(this)[0].checked;
+            $(".pick-d").on("click",function(){
+                $(this)[0].checked = flag;
+            })
+            result()
+        })
+            // 单项选择
+        $(".pick-d").on("click",function(){
+            var i = 0;
+            $(".pick-d").each(function(){
+                if($(this)[0].checked === false){
+                    $(".pick")[0].checked = false;
+                } else {
+                    i += 1;
+                    if(i == $(".pick-d").length){
+                        $(".pick")[0].checked = true;
+                    }
+                }
+            })
+            result();
+        })
+
+        // 公用
+        function result(){
+            var allnum = 0; //总数量
+            var allprice = 0; //总金额
+            $(".tr2").each(function(){
+                if($(this).find(".pick-d")[0].checked == true){
+                    //总量
+                    allnum += parseInt($(this).find(".numchange").html());
+                    // 总额 
+                    allprice += +$(this).find(".zongjia").html();
+                } else {
+                    allnum += 0; 
+                    allprice += 0;
+                }
+            })
+            $(".zj").html(allprice.toFixed(1));
+            $(".zl").html(allnum);
+        }
+
+
+
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./9.4pinxixi.css"> -->
+    <!-- <script src="./jquery.js"></script> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .xq_left{
+            width: 1000px;
+            height: 500px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .pic{
+            /* float: left; */
+            width: 400px;
+            height: 400px;
+            /* background-color: #f99; */
+            /* margin-right: 40px; */
+            cursor: move;
+            position: relative;
+        }
+        .pic img{
+            width: 400px;
+            height: 400px;
+        }
+        .lok{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(100, 100, 255, .5);
+            display: none;
+            position: absolute;
+        }
+        .little-pic{
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            top: 500px;
+        }
+        .little-pic ul li{
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-left: 10px;
+            border: 3px solid #ffffff;
+        }
+
+        .little-pic ul li.one {
+            border-color: red;
+        }
+        .little-pic ul li img {
+            width: 100px;
+            height: 100px;
+        }
+        .bigbox {
+            float: left;
+            width: 400px;
+            height: 400px;
+            background-image: url("all/images/1.jpg");
+            overflow: hidden;
+            display: none;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="xiangqing bx">
+        <div class="xq_left">
+            <div class="pic">
+                <img src="./images/1.jpg" alt="">
+            </div>
+            <div class="lok"></div>
+            <div class="little-pic"> 
+                <li class="one">
+                    <img src="./images/1.jpg"  alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg"  alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg"  alt="">
+                </li>
+                <li>
+                    <img src="./images/2.jpg"  alt="">
+                </li>
+            </div>
+            <div class="bigbox"></div>
+        </div>
+    </div>
+    <script>
+        // var xqleft = document.getElementsByClassName("xq_left");
+        var little_pic = document.getElementsByClassName("little-pic")[0];
+        var lilist = document.getElementsByClassName("little-pic")[0].children;
+        var pic = document.getElementsByClassName("pic")[0];
+        var piclist = document.getElementsByClassName("pic")[0].children[0];
+        var lok = document.getElementsByClassName("lok")[0];
+        var bigbox = document.getElementsByClassName("bigbox")[0];
+        console.log(bigbox)
+        for (var i = 0; i < lilist.length; i++) {
+            lilist[i].index = i;
+            lilist[i].onclick = function () {
+                for (var n = 0; n < lilist.length; n++) {
+                    lilist[n].className = "";
+                }
+                this.className = "one";
+                var img = this.querySelector("img").src;
+                console.log(img);
+                piclist.src = img
+                console.log(piclist.src);
+                bigbox.style.backgroundImage=`url("${img}")`
+            }
+        }
+        pic.onmouseenter = function (e) {
+            lok.style.display = "block";
+            bigbox.style.display = "block";
+            var x = lok.offsetWidth / 2;
+            var y = lok.offsetHeight / 2;
+            //鼠标移动 获取鼠标的位置，相对应给shade的定位,鼠标要保持在shade中间
+            pic.onmousemove = function (e) {
+                var X = e.pageX - pic.offsetLeft - x;
+                var Y = e.pageY - pic.offsetTop - y;
+                var a = pic.clientWidth - lok.offsetWidth;
+                var b = pic.clientHeight - lok.offsetHeight;
+                X = X < 0 ? 0 : X;
+                X = X > a ? a : X;
+                Y = Y < 0 ? 0 : Y;
+                Y = Y > b ? b : Y;
+                lok.style.left = X + "px";
+                lok.style.top = Y + "px";
+
+                bigbox.style.backgroundPositionX = -X * parseInt(bigbox.style.backgroundSize.substring(0, 5)) / bigbox.offsetWidth + "px";
+                bigbox.style.backgroundPositionY = -Y * parseInt(bigbox.style.backgroundSize.substring(6)) / bigbox.offsetHeight + "px";
+            }
+        }
+        //鼠标移除 把鼠标移动时间清除,遮罩跟大盒子隐藏
+        pic.onmouseleave = function () {
+            pic.onmousemove = null;
+            lok.style.display = "none";
+            bigbox.style.display = "none";
+        }
+
+    </script>
+
+</body>
+</html>

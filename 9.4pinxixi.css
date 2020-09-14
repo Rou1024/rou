@@ -1,0 +1,585 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.bx{
+    width: 1200px;
+    margin: 0 auto;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.cf::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.box{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+.head{
+    text-align: right;
+    width: 100%;
+    height: 50px;
+    background-color: #ebe7e7;
+}
+.head span{
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 50px;
+    color: #6c6c6c;
+}
+.dl,.zc{
+    cursor: pointer;
+}
+.nav{
+    width: 1200px;
+    height: 105px;
+    background-color: #fff;
+}
+.nav .logo{
+    float: left;
+    line-height: 63px;
+}
+.nav .logo a{
+    display: block;
+    width: 180px;
+    height: 63px;
+    margin: 21px 0;
+}
+.nav .logo img{
+    width: 100%;
+}
+.nav .nav1{
+    float: right;
+}
+.nav .nav1 a{
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 102px;
+    height: 20px;
+    margin-top: 41px;
+    text-align: center;
+    font-size: 18px;
+    color: #6c6c6c;
+} 
+.nav .nav1 a:hover{
+    color: #f99;
+}
+.nav .nav1 span{
+    display: block;
+    line-height: 105px;
+    float: left;
+    color: #6c6c6c;
+    font-size: 23px;
+}
+.nav .nav1 .shouye{
+    color: #f99;
+}
+.red{
+    width: 100%;
+    height: 5px;
+    background-color: #f00;
+}
+#carousel-example-generic{
+    margin-top: 300px;
+}
+
+
+
+
+.shangpin{
+    width: 100%;
+    height: 60px;
+    background-color: #f99;
+}
+.shangpin div p{
+    width: 130px;
+    line-height: 60px;
+    font-size: 19px;
+    text-align: center;
+    float: left;
+    color: blanchedalmond;
+    margin-bottom: 0; 
+}
+.shangpin div ul{
+    float: left;
+    width: 390px;
+    height: 60px;
+}
+.shangpin div ul li{
+    float: left;
+    width: 130px;
+    line-height: 60px;
+    text-align: center;
+}
+.shangpin div ul li a{
+    text-decoration: none;
+    line-height: 60px;
+    text-align: center;
+    font-size: 19px;
+    padding: 20px 22px;
+    color: blanchedalmond;
+}
+.shangpin div ul li:hover a{
+    background-color: rgb(238, 125, 125);
+    color: rgb(75, 60, 37);
+}
+
+/* 轮播 */
+#carousel-example-generic img{
+    width: 1200px;
+    height: 500px;
+}
+
+
+/* 样式 */
+
+/* shuju */
+.row{
+    margin-top: 100px;
+}
+.vv{
+    border: 1px solid #f99;
+    height: 390px;
+}
+.vv img{
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+}
+.vv h3{
+    text-align: center;
+}
+.vv h3 a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #f99;
+}
+.vv .tu, .vv .ming{
+    cursor: pointer;
+}
+.va a{
+    text-decoration: none;
+}
+.va h4,.va p{
+    font-size: 20px;
+    color: #f99;
+}
+.va p{
+    font-size: 16px;
+}
+
+/* input */
+.boox{
+    width: 500px;
+    height: 100px;
+    margin: 200px auto 0 auto;
+}
+#shop{
+    width: 400px;
+    height: 40px;
+    margin-top: 30px;
+    border: 1px solid #ff5544;
+    border-radius: 6px;
+    outline: none;
+    font-size: 20px;
+    text-indent: 15px;
+}
+#niu{
+    width: 70px;
+    line-height: 40px;
+    font-size: 18px;
+    color: rgb(53, 70, 228);
+    margin-left: 5px;
+    border: 1px solid #ff9999;
+    outline: none;
+    background-color: #f99;
+    border-radius: 5px;
+    color: #6c6c6c;
+}
+.desc{
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+}
+
+
+
+
+
+/* page */
+.pageNav{
+    margin-top: 50px;
+    width: 350px;
+}
+.pageNav ul{
+    list-style: none;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.pageNav ul li{
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: #f99;
+}
+.pageNav ul li.cur{
+    background-color: yellowgreen;
+    margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 详情 */
+.xiangqing{
+    margin-top: 150px;
+    height: 600px;
+    border: 1px solid #E8E8E8;
+}
+.xiangqing .xq-left{
+    float: left;
+    height: 560px;
+    /* position: relative; */
+    margin: 30px 50px;
+}
+.pic{
+    position: relative;
+    width: 418px;
+    height: 418px;
+    float: left;
+    border: 1px solid #f000;
+}
+.pic img{
+    display: block;
+    width: 418px;
+    height: 418px;
+}
+.lok{
+    width: 150px;
+    height: 150px;
+    background-color: rgba(100, 100, 255, .5);
+    position: absolute;
+    display: none;
+    z-index: 1;
+    cursor: move;
+}
+.little-pic{
+    height: 150px;
+    width: 420px;
+    top: 420px;
+}
+.little-pic li img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.little-pic li{
+    border: 2px solid #000;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 20px 1px 20px 0;
+    display: flex;
+}
+.bigbox{
+    width: 420px;
+    height: 420px;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 420px;
+    overflow: hidden;
+    background-image: url(./images/1.jpg);
+    background-repeat: no-repeat;
+    display: none;
+}
+
+
+
+.xiangqing .xq-right{
+    float: left;
+    margin: 30px 50px;
+}
+.pinleiming{
+    color: #3F3E3E;
+    font-size: 16px;
+    line-height: 50px;
+}
+.panel-cx{
+    width: 516px;
+    height: 66px;
+    background-color: #F0EFEF;
+    font-size: 12px;
+    color: #333;
+}
+.panel-cx p{
+    line-height: 30px;
+    margin-left: 10px;
+}
+.huod{
+    color: #f00;
+    margin-top: 20px;
+}
+.gou{
+    margin-top: 80px;
+}
+.gou .goumai{
+    padding: 9px 35px;
+    background-color: #FFE4D0;
+    border: 1px solid #F0CAB6;
+    color: #e5511d;
+    margin-right: 5px;
+}
+.gou .jiagou{
+    background-color: #F40;
+    border: 1px solid #F40;
+    color: #fff;
+    padding: 9px 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* chaxun */
+.fenlei{
+    height: 2600px;
+}
+.ite{
+    margin-top: 100px;
+    height: 2600px;
+}
+.ouy{
+    border: 1px solid #f99;
+    height: 500px;
+}
+.ouy .tu{
+    width: 268px;
+    height: 268px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.ouy .ming{
+    font-size: 20px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+.des{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.des .jiage{
+    font-size: 18px;
+    color: #f00;
+}
+.des .yuexiao{
+    font-size: 12px;
+    color: #3F3E3E;
+}
+
+
+
+
+
+
+
+
+
+/*  gouwuche*/
+.table{
+    width: 1200px !important;
+    margin: 100px auto 20px auto !important;
+}
+.tr2 td a{
+    text-decoration: none;
+    color: #f99;
+}
+.jia, .jian{
+    width: 25px;
+    height: 25px;
+}
+.shanchu{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+/* 底部 */
+.foot{
+    margin-top: 100px;
+}
+.foot-er{
+    float: left;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+.foot-er-1,
+.foot-er-2,
+.foot-er-3{
+    float: left;
+    margin-right: 60px;
+}
+.foot-er-1 img,
+.foot-er-2 img,
+.foot-er-3 img{
+    display: block;
+    width: 162px;
+    height: 162px;
+}
+.foot-er-1 p,
+.foot-er-2 p,
+.foot-er-3 p{
+    margin: 8px auto;
+    color: #4d4d4d;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.mid{
+    float: left;
+    width: 1px;
+    height: 240px;
+    border-left: 1px solid #4d4d4d;
+}
+
+
+.foot-right{
+    float: left;
+    margin-left: 45px;
+}
+.foot .foot-right p{
+    color: #4d4d4d;
+    font-size: 15px;
+    line-height: 16px;
+    margin-top: 20px;
+}
+.foot-right 
+#lianxiwomen{
+    font-size: 24px;
+    margin-top: 0;
+}
+
+
+
+.foot-mid{
+    margin-top: 60px;
+    margin-bottom: 60px; 
+}
+.foot-mid ul{
+    margin-left: 40px;
+}
+.foot-mid ul li{
+    float: left;
+    cursor: pointer;
+}
+.foot-mid ul li a{
+    font-size: 16px;
+    color: #6c6c6c;
+    text-decoration: none;
+    padding: 0 5px;
+}
+.foot-mid ul li a:hover{
+    color: #f99;
+}
+
+
+.foot-end{
+    background-color: #3F3E3E;
+    font-size: 14px;
+    height: 140px;
+    text-align: center;
+    color: #b1b1b1;
+    
+}
+.foot-end div a{
+    font-size: 14px;
+    color: #b1b1b1;
+    text-decoration: none;
+}
+.huizhang{
+    height: 20px;
+    width: 20px;
+    background-image: url(./img/huizhang.png);
+    background-repeat:no-repeat;
+    background-position: -57px 0;
+    background-size: 197px 64px;
+    position: absolute;
+    top: 0;
+    right: 380px;
+}

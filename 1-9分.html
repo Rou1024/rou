@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./9.4pinxixi.css">
+	<script src="./jquery.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.content{
+			background-color: white;
+			width: 1100px;
+			margin: 0 auto;
+			font-size: 12px;
+			padding: 20px;
+		}
+
+
+		.pageNav{
+			margin-top: 10px;
+			width: 259px;
+			margin: 20px auto;
+		}
+		.pageNav ul{
+			list-style: none;
+			overflow: hidden;
+		}
+		.pageNav ul li{
+			float: left;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			margin-right: 5px;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			background: orange;
+		}
+		.pageNav ul li.cur{
+			background-color: yellowgreen;
+		}
+		.mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+		}
+
+
+	</style>
+</head>
+<body>
+	<!-- <div class="content"></div> -->
+		
+    <!-- <div class="pageNav">
+        <ul>
+            <li class="cur"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        // var pageNum = 1;  //初始页 -->
+        <!-- // var maxPage = 9;  //共九页
+        // showData(); 
+        // clickPaging(); 调用分页
+        // function showData(){
+			// $.ajax({
+			// 	url:"http://127.0.0.1/w/website/findGoodsList",
+			// 	cuccess:function(res){
+			// 		console.log(res)
+			// 	}
+			// })
+            // $.get("",function(res){
+            //     var abj = JSON.parse(res);
+			// 	console.log(abj);
+			// 	var ss = "";
+			// 		var datalist = res.data.tbk_dg_material_optional_response.result_list.map_data;
+			// 		for(var i = 0; i < datalist.length; i++){
+			// 			var ite = datalist;
+			// 			console.log(ite);
+			// 			ss+=`<div class="col-md-3 col-sm-6 col-xs-12 vv">
+			// 					<img class="tu" src="${ite[i].pict_url}" width="100%">
+			// 					<h4 class="ming">${ite[i].title}</h4>
+			// 					<div class="desc">
+			// 						<p class="jiage" ${ite[i].zk_final_price}">￥${ite[i].zk_final_price}</p>
+			// 						<p class="yuexiao" ${ite[i].shop_dsr}">月销:${ite[i].shop_dsr}</p>
+			// 					</div>
+			// 				</div>`
+			// 		}
+			// 		$(".iteme").html(ss);
+            // })
+		// }
+		// 封装分页1--9
+        // function clickPaging(){
+		// 	if ( pageNum >= 1 && pageNum <= 3 ){
+		// 		$(".pageNav ul li").eq(0).html("1");
+		// 		$(".pageNav ul li").eq(1).html("2");
+		// 		$(".pageNav ul li").eq(2).html("3");
+		// 		$(".pageNav ul li").eq(3).html("4");
+		// 		$(".pageNav ul li").eq(4).html("……");
+		// 		$(".pageNav ul li").eq(5).html(maxPage - 1);
+		// 		$(".pageNav ul li").eq(6).html(maxPage);
+		// 		$(".pageNav ul li").eq(pageNum-1).addClass("cur").siblings().removeClass("cur");
+		// 	} else if ( pageNum <= maxPage && pageNum >= maxPage - 2 ){
+        //             $(".pageNav ul li").eq(0).html("1");
+        //             $(".pageNav ul li").eq(1).html("2");
+        //             $(".pageNav ul li").eq(2).html("……");
+        //             $(".pageNav ul li").eq(3).html(maxPage-3);
+        //             $(".pageNav ul li").eq(4).html(maxPage-2);
+        //             $(".pageNav ul li").eq(5).html(maxPage-1);
+        //             $(".pageNav ul li").eq(6).html(maxPage);
+        //             $(".pageNav ul li").eq(pageNum-maxPage-1).addClass("cur").siblings().removeClass("cur");
+        //         }else{
+        //             $(".pageNav ul li").eq(0).html("1");
+        //             $(".pageNav ul li").eq(1).html("……");
+        //             $(".pageNav ul li").eq(2).html(pageNum-1);
+        //             $(".pageNav ul li").eq(3).html(pageNum);
+        //             $(".pageNav ul li").eq(4).html(pageNum+1);
+        //             $(".pageNav ul li").eq(5).html("……");
+        //             $(".pageNav ul li").eq(6).html(maxPage);
+        //             $(".pageNav ul li").eq(3).addClass("cur").siblings().removeClass("cur");
+        //         }
+		// }		
+		 
+		 // 监听分页
+		// bindEvent()
+		// function bindEvent(){
+		// 	$(".pageNav ul li").click(function(event){
+		// 		//……不能点击
+		// 		if($(this).html()=="……"){
+		// 			return;
+		// 		}
+		// 		// 改变页数
+		// 		pageNum = parseInt($(this).html());
+		// 		showData();
+		// 		clickPaging();
+		// 		window.location.hash=pageNum
+		// 	})
+		// }
+		// </script> -->
+	
+
+
+
+		
+</body> 
+</html>
+
+
+
+
+ 
+

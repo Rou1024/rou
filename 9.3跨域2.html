@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        jsonp("./jsonp.txt","fun",function(res){
+            console.log(res)
+        })
+        function jsonp(URL,callbackname,callback){
+            window[callbackname] = callback;
+            // tianjiajiedian
+            var scriptObj = document.createElement("script");
+            scriptObj.src = URL;
+            document.body.appendChild(scriptObj);
+            document.body.removeChild(scriptObj);
+        }
+    </script>
+</body>
+</html>
